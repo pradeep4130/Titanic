@@ -16,9 +16,34 @@ View(titanic_o)
 #titanic_o$embarked[1]
 #titanic_o$embarked[1310]
 
-for (x in 1: length(titanic_o$embarked)) {
+for (x in 1:length(titanic_o$embarked)) {
   if (titanic_o$embarked[x] == "") { titanic_o$embarked[x] <- "S"}
 }
 
 View(titanic_o)
+
+# 2: Age
+
+age_mean <- mean(titanic_o$age, na.rm = TRUE)
+age_mean
+
+#is.na(titanic_o$age)
+
+for (x in 1:length(titanic_o$age)) {
+      if (is.na(titanic_o$age[x])) 
+          {titanic_o$age[x] <- age_mean}
+}
+
+View(titanic_o)
+
+
+
+
+
+
+
+
+
+
+
 
