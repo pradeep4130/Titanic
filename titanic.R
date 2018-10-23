@@ -56,6 +56,10 @@ titanic_o <- titanic_o %>% mutate('has_cabin_number' = ifelse(titanic_o$cabin ==
 
 View(titanic_o)
 
+# 5: Submit the project on Github
+
+write.csv(titanic_o, file = 'titanic_clean.csv')
+read.csv(file = 'titanic_clean.csv', header = TRUE)
 
 
 
