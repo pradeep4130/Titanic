@@ -1,6 +1,7 @@
 library(gdata)
 library(dplyr)
 library(tidyr)
+library(ggplot2)
 
 
 # 0: Load the data in RStudio
@@ -59,8 +60,32 @@ View(titanic_o)
 # 5: Submit the project on Github
 
 write.csv(titanic_o, file = 'titanic_clean.csv')
-read.csv(file = 'titanic_clean.csv', header = TRUE)
+titanic_c <- read.csv(file = 'titanic_clean.csv', header = TRUE)
+View(titanic_c)
 
+
+# 6: ggplot2 tutorial--Copy and paste the R code from the Titanic exercise in the ggplot2 tutorial into a file Titanic.R
+
+# titanic is avaliable in your workspace
+# 1 - Check the structure of titanic
+str(titanic_c)
+
+# 2 - Use ggplot() for the first instruction
+ggplot(titanic_c, aes(x = pclass, fill = sex)) +
+  geom_bar(position = "dodge")
+
+# 3 - Plot 2, add facet_grid() layer
+ggplot(titanic_c, aes(x = pclass, fill = sex)) +
+  geom_bar(position = "dodge") +
+  facet_grid(.~survived)
+
+# 4 - Define an object for position jitterdodge, to use below
+posn.jd <- position_jitterdodge(0.5, 0, 0.6)
+
+# 5 - Plot 3, but use the position object from instruction 4
+ggplot(titanic_c, aes(x = pclass,y=age, color = sex)) +
+  geom_point(size= 3,alpha= 0.5,position = posn.jd) +
+  facet_grid(.~survived)
 
 
 
